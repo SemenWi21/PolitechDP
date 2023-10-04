@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Welcome</title>
+</head>
+<body>
+<h1>Базы данных</h1>
+
+<div>
+  <div style="float: left; margin-right: 4px" >
+    <form method="get" action="/startPage/category">
+      <button class="btn-sbmt" type="submit">Категории</button>
+    </form>
+  </div>
+  <div style="float: left; margin-right: 4px" >
+    <form method="get" action="/startPage/vendor">
+      <button class="btn-sbmt" type="submit">Поставщик</button>
+    </form>
+  </div>
+  <div>
+    <form method="get" action="/startPage">
+      <button class="btn-sbmt" type="submit">Продукты</button>
+    </form>
+  </div>
+</div>
+<br>
+<div>
+  <table border="1">
+    <tr>
+      <th th:text="${nameColumn.get(0)}">...</th>
+      <th th:text="${nameColumn.get(1)}">...</th>
+      <th th:text="${nameColumn.get(2)}">...</th>
+      <th></th>
+    </tr>
+    <tr th:each ="list : ${List}">
+      <td th:utext="${list.getOne()}">...</td>
+      <td th:utext="${list.getTwo()}">...</td>
+      <td th:utext="${list.getThree()}">...</td>
+      <td>
+        <form th:action="@{/startPage/delete}" method="post">
+          <input type="hidden" name="id" th:value="${list.getid()}" />
+          <input type="hidden" name="prm" th:value="${parametr}" />
+          <input type="submit" value="Delete" class="btn btn-danger" />
+        </form>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div>
+  <div style="float: left; margin-right: 4px">
+    <form action="#" th:action="@{/startPage/add/{prm}(prm = ${parametr})}" method="get">
+      <input type="image" src="https://papik.pro/uploads/posts/2021-12/1639291603_56-papik-pro-p-plyus-klipart-59.jpg" style="width: 28px;">
+    </form>
+  </div>
+</div>
+
+</body>
+
+</html>

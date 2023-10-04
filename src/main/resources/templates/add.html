@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login in my site</title>
+</head>
+<body>
+<h3>Добавление элемента</h3>
+
+<div>
+    <form  action="#" th:action="@{/startPage/add/{prm}(prm = ${parametr})}" method="post">
+        <label th:text="${nameColumn.get(0)}">...</label>
+        <input type="text" name="first">
+
+        <label th:text="${nameColumn.get(1)}" >...</label>
+        <input type="text" name="second">
+
+        <label th:text="${nameColumn.get(2)}" >...</label>
+        <input type="text" name="three">
+
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+</body>
+</html>
